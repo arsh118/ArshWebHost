@@ -1,0 +1,202 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #a855f7;
+    --accent-color: #ec4899;
+    --dark-color: #1e293b;
+    --light-color: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: var(--light-color);
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    padding: 6rem 0
+        /*top_bottom and left-right */
+    ;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    /* The ::before pseudo-element adds content or styles before an element's content, eliminating the need for extra HTML elements. */
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transform: rotate(45deg);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+
+    /* This tells the browser: 👉 "Apply the animation named shine to this pseudo-element." */
+    0% {
+        left: -50%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    /* transition: <property> <duration> <timing-function>; */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Starting speed curve(, ,) AND ending speed curve(, ,) */
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    /*     box-shadow: 0px (horizontal offset), 25px (vertical offset), 50px (blur radius), -12px (spread radius), rgba(0, 0, 0, 0.3) (color); */
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    /*Important */
+    border-radius: 1rem 1rem 0 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #e2e8f0;
+    /* Changed to light gray */
+    line-height: 1.6;
+    font-weight: 300;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    /* Added subtle text shadow */
+}
+
+.text-inside {
+    font-size: 1.1rem;
+    color: #38bdf8 !important;
+    /* Changed to bright cyan */
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.newul {
+    color: #cbd5e1;
+    /* Changed to lighter gray */
+}
+
+.newul li::before {
+    color: #38bdf8;
+    /* Match accent color */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.animate-card {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: cardEntrance 0.6s ease forwards;
+}
+
+@keyframes cardEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+footer {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    margin-top: 5rem;
+    padding: 2rem 0;
+}
+
+.text-inside {
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.newul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.newul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.newul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
